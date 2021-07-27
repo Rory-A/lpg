@@ -1,0 +1,76 @@
+-- ****************************************
+-- This SQL script populates the initial data.
+-- ****************************************
+
+INSERT INTO example_products (name, description, category) VALUES
+   -- ('entity_01'),
+   -- ('entity_02'),
+   -- ('entity_03'),
+   -- ('entity_04'),
+   -- ('entity_05'),
+   -- ('entity_06'),
+   -- ('entity_07'),
+   -- ('entity_08'),
+   -- ('entity_09'),
+   -- ('entity_10'),
+   -- ('entity_11'),
+   -- ('entity_12'),
+   -- ('entity_13'),
+   -- ('entity_14'),
+   -- ('entity_15'),
+   -- ('entity_16'),
+   -- ('entity_17'),
+   -- ('entity_18'),
+   -- ('entity_19'),
+   -- ('entity_20'),
+   -- ('entity_21'),
+   -- ('entity_22'),
+   -- ('entity_23'),
+   -- ('entity_24'),
+   -- ('entity_25'),
+   -- ('entity_26'),
+   -- ('entity_27'),
+   -- ('entity_28'),
+   -- ('entity_29'),
+   -- ('entity_30');
+
+('Knife Set', 'A set of knives in all shapes and sizes.', 1),
+('Plate Rack', 'A storage solution for plates.', 1),
+('Microwave', 'Cook food quick with this handy microwave.', 1),
+('Juicer', 'When life gives you lemons, make lemonade.', 1),
+('Meat Hooks', 'A butchers meat hook.', 1),
+('Cabinet Knobs', 'Make sure you can open your cabinets.', 1),
+('Frying Pans', 'Cook up a storm with this non stick frying pan.', 1),
+('Power Drill', 'A drill, but with an electric motor.', 2),
+('Jack Hammer', 'Demolish old concrete and removing pavement, it does it all1', 2),
+('Table Saw', 'A saw ideal for table top use.', 2),
+('Sander', 'Get that smooth finish you have been craving.', 2),
+('Circular Saw', 'Its a saw, but circular.', 2),
+('Diamond Core', 'Cut some really big holes in some really tough materials with this solid drill bit.', 2),
+('Paddle Mixer', 'Mix just about anything with this paddle mixer.', 2),
+('Sofas', 'Sofas galore, they are super soft and comfortable.', 3),
+('Coffee Tables', 'Keep your coffee safe and stick it on one of these tables.', 3),
+('Monoblocks', 'Lovely paving slabs which look great anywhere!', 3),
+('Footstool', 'Pop your feet up, you have earned it.', 3),
+('Armchair', 'Its a chair, but for you arms.', 3),
+('5 Chest Drawer', 'So many drawers.', 3),
+('3 Chest Drawer', 'Not so many drawers.', 3),
+('Copper Wiring (10m)', 'A big old spindle of copper wiring.', 4),
+('Wire Strippers', 'Strip wire easily, with wire strippers.', 4),
+('Torch', 'Shine on.', 4),
+('Cable Knife', 'Cut cables, with a cable knife.', 4),
+('Insulated Screwdrivers', 'Toasty screwdrivers.', 4),
+('Light Bulb', 'What a great idea.', 4),
+('Batteries', 'They last a really really long time.', 4),
+('Hand Towel', 'Towels for your hands.', 5),
+('Face Towel', 'Towels for you face.', 5),
+('Toilet Seats', 'Seats for your toilet.', 5),
+('Shower Head', 'Heads for your shower.', 5),
+('Drain Plug', 'A high quality drain plug.', 5),
+('Towel Rack', 'Hang your towels here.', 5);
+
+
+
+
+
+

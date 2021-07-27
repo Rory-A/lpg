@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="fragments/header :: header" />
+<body>
+
+   <section id="main-section" class="container-fluid">
+      <h1>Add a product</h1>
+      <section id="form" class="form-well">
+         <form action="#" th:action="@{/product}"
+            th:object="${form}" method="post" role="form" class="form">
+            <div class="col-md-12">
+               <div class="panel panel-default">
+                  <div class="panel-heading">Product data</div>
+                  <div class="panel-body">
+                     <!-- Name input -->
+                     <div class="form-group"
+                        th:classappend="${#fields.hasErrors('name')} ? 'error'">
+                        <label class="control-label" for="name">Name</label>
+                        <div class="controls">
+                           <input type="text" th:field="*{name}"
+                              class="form-control"
+                              placeholder="Name">
+                           <!-- Validation errors -->
+                           <p
+                              th:if="${#fields.hasErrors('name')}"
+                              class="label label-danger"
+                              th:errors="*{name}">Error</p>
+
+                           <label class="control-label" for="description">Description</label>
+                           <input type="text" th:field="*{description}"
+                           class="form-control"
+                           placeholder="Description">
+
+                           <label class="control-label" for="category">Category Id</label>
+                           <input type="text" th:field="*{category}"
+                           class="form-control"
+                           placeholder="Category">
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div id="submit" class="row">
+               <div class="col-md-12">
+                  <button type="submit">Submit</button>
+               </div>
+            </div>
+         </form>
+      </section>
+   </section>
+
+   <footer>
+      <div th:include="fragments/scripts :: general" />
+   </footer>
+</body>
+
+</html>

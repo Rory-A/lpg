@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Product.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">leisure-pass-group</a> &gt; <a href="index.source.html" class="el_package">com.example.model.persistence</a> &gt; <span class="el_source">Product.java</span></div><h1>Product.java</h1><pre class="source lang-java linenums">package com.example.model.persistence;
+
+import static com.google.common.base.Preconditions.checkNotNull;
+
+import java.util.Objects;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import com.google.common.base.MoreObjects;
+
+import com.example.model.IProduct;
+
+
+@Entity(name = &quot;Product&quot;)
+@Table(name = &quot;example_products&quot;)
+public class Product implements IProduct {
+
+
+    @Transient
+    private static final long serialVersionUID = 1328776989450853491L;
+
+<span class="fc" id="L28">    @Id</span>
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = &quot;id&quot;, nullable = false, unique = true)
+<span class="fc" id="L31">    private Integer id = -1;</span>
+
+<span class="fc" id="L33">    @Column(name = &quot;name&quot;, nullable = false, unique = true)</span>
+    private String name = &quot;&quot;;
+
+<span class="fc" id="L36">    @Column(name = &quot;category&quot;, nullable = false)</span>
+    private Integer category = null;
+
+<span class="fc" id="L39">    @Column(name = &quot;description&quot;)</span>
+    private String description = &quot;&quot;;
+
+    public Product() {
+<span class="fc" id="L43">        super();</span>
+<span class="fc" id="L44">    }</span>
+
+    @Override
+    public final boolean equals(final Object obj) {
+<span class="nc bnc" id="L48" title="All 2 branches missed.">        if (this == obj) {</span>
+<span class="nc" id="L49">            return true;</span>
+        }
+
+<span class="nc bnc" id="L52" title="All 2 branches missed.">        if (obj == null) {</span>
+<span class="nc" id="L53">            return false;</span>
+        }
+
+<span class="nc bnc" id="L56" title="All 2 branches missed.">        if (getClass() != obj.getClass()) {</span>
+<span class="nc" id="L57">            return false;</span>
+        }
+
+<span class="nc" id="L60">        final Product other = (Product) obj;</span>
+<span class="nc" id="L61">        return Objects.equals(id, other.id);</span>
+    }
+
+    @Override
+    public Integer getId() {
+<span class="fc" id="L66">        return id;</span>
+    }
+
+    @Override
+    public String getName() {
+<span class="nc" id="L71">        return name;</span>
+    }
+
+    @Override
+    public Integer getCategory() {
+<span class="nc" id="L76">        return category;</span>
+    }
+
+    @Override
+    public String getDescription() {
+<span class="nc" id="L81">        return description;</span>
+    }
+
+    @Override
+    public final int hashCode() {
+<span class="nc" id="L86">        return Objects.hash(id);</span>
+    }
+
+    @Override
+    public void setId(final Integer value) {
+<span class="nc" id="L91">        id = checkNotNull(value, &quot;Received a null pointer as identifier&quot;);</span>
+<span class="nc" id="L92">    }</span>
+
+    @Override
+    public void setName(final String value) {
+<span class="fc" id="L96">        name = checkNotNull(value, &quot;Received a null pointer as name&quot;);</span>
+<span class="fc" id="L97">    }</span>
+
+    @Override
+    public void setCategory(final Integer value) {
+<span class="fc" id="L101">        category = checkNotNull(value, &quot;Received a null pointer as category&quot;);</span>
+<span class="fc" id="L102">    }</span>
+
+    @Override
+    public void setDescription(final String value) {
+<span class="fc" id="L106">        description = checkNotNull(value, &quot;Received a null pointer as description&quot;);</span>
+<span class="fc" id="L107">    }</span>
+
+    @Override
+    public final String toString() {
+<span class="nc" id="L111">        return MoreObjects.toStringHelper(this).add(&quot;entityId&quot;, id).toString();</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="fragments/header :: header" />
+<body>
+   <header class="header" th:include="fragments/menu :: menu" />
+
+   <section id="main-section" class="container-fluid">
+      <h1>Products</h1>
+      <table class="table table-striped display dataTable">
+         <thead>
+            <tr>
+               <th>Name</th>
+               <th>Category</th>
+               <th>Description</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr th:each="product : ${products}">
+               <td>
+                  <span th:remove="tag" th:text="${product?.name}">Name</span>
+               </td>
+               <td>
+                  <span th:if="${product?.category == 1}">Kitchen</span>
+                  <span th:if="${product?.category == 2}">Power tools</span>
+                  <span th:if="${product?.category == 3}">Furniture</span>
+                  <span th:if="${product?.category == 4}">Electric</span>
+                  <span th:if="${product?.category == 5}">Washroom</span>
+               </td>
+               <td>
+                  <span th:remove="tag" th:text="${product?.description}">Description</span>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+   </section>
+
+   <footer>
+      <div th:include="fragments/scripts :: general" />
+   </footer>
+</body>
+
+</html>

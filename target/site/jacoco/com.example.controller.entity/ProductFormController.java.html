@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ProductFormController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">leisure-pass-group</a> &gt; <a href="index.source.html" class="el_package">com.example.controller.entity</a> &gt; <span class="el_source">ProductFormController.java</span></div><h1>ProductFormController.java</h1><pre class="source lang-java linenums">package com.example.controller.entity;
+
+import static com.google.common.base.Preconditions.checkNotNull;
+
+import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.example.service.IProductService;
+import com.example.model.persistence.Product;
+import com.example.model.form.ProductForm;
+
+@Controller
+@RequestMapping(&quot;/product&quot;)
+public class ProductFormController {
+
+    private final IProductService productService;
+
+    @Autowired
+    public ProductFormController(final IProductService service) {
+<span class="fc" id="L29">        super();</span>
+
+<span class="fc" id="L31">        productService = checkNotNull(service, &quot;Received a null pointer as service&quot;);</span>
+<span class="fc" id="L32">    }</span>
+
+    @ModelAttribute(ProductViewConstants.BEAN_FORM)
+    public ProductForm getProductForm() {
+<span class="fc" id="L36">        return new ProductForm();</span>
+    }
+
+    @PostMapping
+    public String saveProduct(final ModelMap model,
+            @ModelAttribute(ProductViewConstants.BEAN_FORM) @Valid final ProductForm form,
+            final BindingResult bindingResult, final HttpServletResponse response) {
+        final String path;
+        final Product product;
+
+<span class="fc bfc" id="L46" title="All 2 branches covered.">        if (bindingResult.hasErrors()) {</span>
+<span class="fc" id="L47">            path = ProductViewConstants.VIEW_ENTITY_FORM;</span>
+<span class="fc" id="L48">            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);</span>
+        } else {
+
+<span class="fc" id="L51">            product = new Product();</span>
+<span class="fc" id="L52">            product.setName(form.getName());</span>
+<span class="fc" id="L53">            product.setCategory(form.getCategory());</span>
+<span class="fc" id="L54">            product.setDescription(form.getDescription());</span>
+
+<span class="fc" id="L56">            productService.add(product);</span>
+
+            // TODO: This flow decision shouldn't be handled by the controller
+            // TODO: This should be a redirection to the list controller
+            // Loads required data into the model
+<span class="fc" id="L61">            loadViewModel(model);</span>
+
+<span class="fc" id="L63">            path = ProductViewConstants.VIEW_ENTITY_LIST;</span>
+        }
+
+<span class="fc" id="L66">        return path;</span>
+    }
+
+    @GetMapping(path = &quot;/edit&quot;)
+    public String showProductForm() {
+<span class="fc" id="L71">        return ProductViewConstants.VIEW_ENTITY_FORM;</span>
+    }
+
+    private final void loadViewModel(final ModelMap model) {
+<span class="fc" id="L75">        model.put(ProductViewConstants.PARAM_ENTITIES, productService.getAllProducts());</span>
+<span class="fc" id="L76">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
